@@ -18,11 +18,8 @@ public class MainTestClass {
     public void setUp() throws IOException {
         System.setProperty("webdriver.chrome.driver", "/home/acciosky/Documents/Drivers/chromedriver");
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(readerClass.readFromFile(0));
-
-
     }
 
 
