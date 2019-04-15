@@ -1,30 +1,25 @@
 import Pages.FileReaderClass;
-import io.github.bonigarcia.wdm.WebDriverManager;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 
 public class MainTestClass {
-
-    private ChromeDriver driver;
+    private WebDriver driver;
 
     FileReaderClass readerClass = new FileReaderClass();
 
     @BeforeClass
     public void setUp() throws IOException {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        DesiredCapabilities cap = new DesiredCapabilities();
-        cap.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, "normal");
-        options.addArguments("start-maximized");
-        options.addArguments("--no-sandbox");
-        driver = new ChromeDriver(options);
+        System.setProperty("webdriver.chrome.driver", "/home/acciosky/Documents/Drivers/chromedriver");
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         driver.get(readerClass.readFromFile(0));
 
 
