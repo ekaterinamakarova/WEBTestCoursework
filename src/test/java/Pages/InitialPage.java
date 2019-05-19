@@ -57,9 +57,9 @@ public class InitialPage {
 
     public void toRegisterPage(){
         if (navigation_sections.get(0).getText().equals("LOGIN")) {
-            navigation_sections.get(0).click();
+            navigation_sections.get(1).click();
         }
-        else navigation_sections.get(1).click();
+        else navigation_sections.get(0).click();
     }
 
     public void toLoginPage(){

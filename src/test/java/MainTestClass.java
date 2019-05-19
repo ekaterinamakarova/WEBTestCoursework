@@ -5,6 +5,7 @@
 import Pages.FileReaderClass;
 
 import Pages.InitialPage;
+import Pages.RegisterPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
@@ -19,6 +20,7 @@ public class MainTestClass {
 
     FileReaderClass readerClass = new FileReaderClass();
     private InitialPage initialPage;
+    private RegisterPage registerPage;
 
 
     @BeforeClass
@@ -31,14 +33,22 @@ public class MainTestClass {
         driver.manage().window().maximize(); /** Полноэкранный режим */
         driver.get(readerClass.readFromFile(0));
         initialPage = new InitialPage(driver);
+        registerPage = new RegisterPage(driver);
     }
 
-    @Test
-    public void test() {
+    @Test(description = "Test cases 6-9")
+    public void testInitialPage() {
         initialPage.navigationPresenceChecking();
         initialPage.navigationActivityChecking();
-        initialPage.toRegisterPage();
-
     }
+
+    @Test(description = "Test cases _______", dependsOnMethods = "testInitialPage")
+    public void testRegisterPage() {
+        initialPage.toRegisterPage();
+        registerPage.fieldsChecking();
+        registerPage.fields_validation();
+    }
+
+
 
 }

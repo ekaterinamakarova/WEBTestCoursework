@@ -36,4 +36,8 @@ public class HelpMethods {
         driver.manage().timeouts().implicitlyWait(7,SECONDS);
     }
 
+    public WebElement currentElements(){
+        WebElement activeElement = driver.switchTo().activeElement();
+        return activeElement;
+    }
 }
