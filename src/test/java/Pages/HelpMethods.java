@@ -12,6 +12,10 @@ public class HelpMethods {
 
     WebDriver driver;
 
+    public HelpMethods(WebDriver driver) {
+        this.driver = driver;
+    }
+
     public Wait<WebDriver> getWebDriverWait() {
         return (Wait<WebDriver>) new FluentWait<>(driver)
                 .withTimeout(30, SECONDS)

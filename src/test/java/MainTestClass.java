@@ -34,8 +34,9 @@ public class MainTestClass {
     }
 
     @Test
-    public void test(){
-        initialPage.infoPresenceChecking();
+    public void test() {
+        initialPage.navigationPresenceChecking();
+        initialPage.navigationActivityChecking();
 
     }
 
