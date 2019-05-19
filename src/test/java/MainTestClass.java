@@ -37,6 +37,7 @@ public class MainTestClass {
     public void test() {
         initialPage.navigationPresenceChecking();
         initialPage.navigationActivityChecking();
+        initialPage.toRegisterPage();
 
     }
 

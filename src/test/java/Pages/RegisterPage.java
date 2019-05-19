@@ -20,4 +20,6 @@ public class RegisterPage {
     public String returnHeader(){
         return header.getText();
     }
+
+
 }

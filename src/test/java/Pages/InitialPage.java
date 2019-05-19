@@ -54,4 +54,18 @@ public class InitialPage {
             Assert.assertEquals(loginPage.returnHeader(), "Welcome back!");
         }
     }
+
+    public void toRegisterPage(){
+        if (navigation_sections.get(0).getText().equals("LOGIN")) {
+            navigation_sections.get(0).click();
+        }
+        else navigation_sections.get(1).click();
+    }
+
+    public void toLoginPage(){
+        if (navigation_sections.get(0).getText().equals("REGISTER")) {
+            navigation_sections.get(0).click();
+        }
+        else navigation_sections.get(1).click();
+    }
 }
