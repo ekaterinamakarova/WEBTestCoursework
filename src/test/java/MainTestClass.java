@@ -43,14 +43,15 @@ public class MainTestClass {
     }
 
     @Test(description = "Test cases _______", dependsOnMethods = "testInitialPage")
-    public void testRegisterPage() {
+    public void testRegisterPage() throws IOException {
         initialPage.toRegisterPage();
-//        registerPage.fieldsChecking();
-//        registerPage.firstNameField_validation();
-//        registerPage.secondNameField_validation();
+        registerPage.fieldsChecking();
+        registerPage.firstNameField_validation();
+        registerPage.secondNameField_validation();
         registerPage.loginField_validation();
         registerPage.emailField_validation();
         registerPage.passwordFields_validation();
+        registerPage.validRegistration();
     }
 
 

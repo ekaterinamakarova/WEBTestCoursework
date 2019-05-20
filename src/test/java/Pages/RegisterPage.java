@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.util.List;
 
 public class RegisterPage {
@@ -17,11 +18,13 @@ public class RegisterPage {
 
     WebDriver driver;
     HelpMethods helpMethods;
+    FileReaderClass fileReaderClass;
 
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         helpMethods = new HelpMethods(driver);
+        fileReaderClass = new FileReaderClass();
     }
 
     public String returnHeader(){
@@ -66,7 +69,7 @@ public class RegisterPage {
         firstName.clear();
         firstName.sendKeys("    "); //spaces
         sign_in_button.click();
-        //Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "First name"); //////////////////////////////////////////
+        //Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "First name");
         firstName.clear();
         firstName.sendKeys("*/@*/--"); //spaces
         sign_in_button.click();
@@ -100,7 +103,7 @@ public class RegisterPage {
         secondName.clear();
         secondName.sendKeys("    "); //spaces
         sign_in_button.click();
-        //Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Second name"); //////////////////////////////////////////
+        //Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Second name");
         secondName.clear();
         secondName.sendKeys("*/@*/--"); //spaces
         sign_in_button.click();
@@ -163,7 +166,7 @@ public class RegisterPage {
         sign_in_button.click();
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
         email.clear();
-        email.sendKeys("ekaterina.makarova.1999@mail.ru"); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        email.sendKeys("ekaterina.makarova.1999@mail.ru");
     }
 
     public void passwordFields_validation(){
@@ -195,12 +198,19 @@ public class RegisterPage {
         password.clear();
         repeatPassword.sendKeys("123456");
         sign_in_button.click();
-        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Password");
         repeatPassword.clear();
         password.sendKeys("1345678");
         repeatPassword.sendKeys("8765431");
         sign_in_button.click();
         //Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Password");
+    }
+
+    public void validRegistration() throws IOException {
+        for (int i = 0; i <fields.size(); i++){
+            fields.get(i).clear();
+            fields.get(i).sendKeys(fileReaderClass.readFromFile(i+1));
+        }
+        sign_in_button.click();
     }
 
 
