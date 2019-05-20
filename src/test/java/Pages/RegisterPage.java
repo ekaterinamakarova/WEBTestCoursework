@@ -32,6 +32,7 @@ public class RegisterPage {
     }
 
     public void fieldsChecking(){
+        System.out.println("-----REGISTER PAGE TEST-----");
         Assert.assertEquals(fields.get(0).getAttribute("placeholder"), "First name");
         Assert.assertEquals(fields.get(1).getAttribute("placeholder"), "Second name");
         Assert.assertEquals(fields.get(2).getAttribute("placeholder"), "Login");
@@ -39,6 +40,7 @@ public class RegisterPage {
         Assert.assertEquals(fields.get(4).getAttribute("placeholder"), "Password");
         Assert.assertEquals(fields.get(5).getAttribute("placeholder"), "Repeat password");
         Assert.assertEquals(sign_in_button.isDisplayed(),true);
+        System.out.println("FIELDS CHECKING TEST PASSED");
     }
 
     public void firstNameField_validation(){
@@ -75,6 +77,7 @@ public class RegisterPage {
         sign_in_button.click();
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
         firstName.clear();
+        System.out.println("FIRST NAME VALIDATION TEST PASSED");
     }
 
     public void secondNameField_validation(){
@@ -109,6 +112,7 @@ public class RegisterPage {
         sign_in_button.click();
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
         secondName.clear();
+        System.out.println("SECOND NAME VALIDATION TEST PASSED");
     }
 
     public void loginField_validation(){
@@ -140,6 +144,7 @@ public class RegisterPage {
         login.sendKeys("//*@@*");
         sign_in_button.click();
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
+        System.out.println("LOGIN VALIDATION TEST PASSED");
     }
 
     public void emailField_validation(){
@@ -167,6 +172,7 @@ public class RegisterPage {
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
         email.clear();
         email.sendKeys("ekaterina.makarova.1999@mail.ru");
+        System.out.println("EMAIL VALIDATION TEST PASSED");
     }
 
     public void passwordFields_validation(){
@@ -203,6 +209,7 @@ public class RegisterPage {
         repeatPassword.sendKeys("8765431");
         sign_in_button.click();
         //Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Password");
+        System.out.println("PASSWORDS VALIDATION TEST PASSED");
     }
 
     public void validRegistration() throws IOException {
@@ -211,7 +218,6 @@ public class RegisterPage {
             fields.get(i).sendKeys(fileReaderClass.readFromFile(i+1));
         }
         sign_in_button.click();
+        System.out.println("REGISTRATION TEST PASSED");
     }
-
-
 }

@@ -5,6 +5,7 @@
 import Pages.FileReaderClass;
 
 import Pages.InitialPage;
+import Pages.LoginPage;
 import Pages.RegisterPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,6 +22,7 @@ public class MainTestClass {
     FileReaderClass readerClass = new FileReaderClass();
     private InitialPage initialPage;
     private RegisterPage registerPage;
+    private LoginPage loginPage;
 
 
     @BeforeClass
@@ -34,6 +36,7 @@ public class MainTestClass {
         driver.get(readerClass.readFromFile(0));
         initialPage = new InitialPage(driver);
         registerPage = new RegisterPage(driver);
+        loginPage = new LoginPage(driver);
     }
 
     @Test(description = "Test cases 6-9")
@@ -54,6 +57,12 @@ public class MainTestClass {
         registerPage.validRegistration();
     }
 
+    @Test(description = "Test cases _______", dependsOnMethods = "testRegisterPage")
+    public void testLoginPage(){
+        initialPage.toLoginPage();
+        loginPage.fieldsPresence();
 
 
+    }
 }
+
