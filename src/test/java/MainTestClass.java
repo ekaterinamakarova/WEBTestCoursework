@@ -46,7 +46,7 @@ public class MainTestClass {
     }
 
     @Test(description = "Test cases _______", dependsOnMethods = "testInitialPage")
-    public void testRegisterPage() throws IOException {
+    public void testRegisterPage() throws IOException, InterruptedException {
         initialPage.toRegisterPage();
         registerPage.fieldsChecking();
         registerPage.firstNameField_validation();
@@ -54,13 +54,16 @@ public class MainTestClass {
         registerPage.loginField_validation();
         registerPage.emailField_validation();
         registerPage.passwordFields_validation();
+        registerPage.inputOgExistindData();
         registerPage.validRegistration();
     }
 
     @Test(description = "Test cases _______", dependsOnMethods = "testRegisterPage")
-    public void testLoginPage(){
+    public void testLoginPage() throws IOException, InterruptedException {
         initialPage.toLoginPage();
         loginPage.fieldsPresence();
+        loginPage.loginField_validation();
+        loginPage.validLogin();
 
 
     }

@@ -14,6 +14,9 @@ public class RegisterPage {
     @FindBy(css = "div[class='card-header'] h4") public WebElement header;
     @FindBy(css = "input") public List<WebElement> fields;
     @FindBy(xpath = "//button[contains(text(),'Sign in')]") private WebElement sign_in_button;
+    @FindBy(css = "div[class='alert alert-danger error']") private WebElement error_alert;
+    @FindBy(css = "div[class='alert alert-success error']") private WebElement success_alert;
+
 
 
     WebDriver driver;
@@ -212,12 +215,36 @@ public class RegisterPage {
         System.out.println("PASSWORDS VALIDATION TEST PASSED");
     }
 
-    public void validRegistration() throws IOException {
+    public void inputOgExistindData() throws IOException, InterruptedException {
+        for (int i = 0; i <fields.size(); i++){
+            fields.get(i).clear();
+            fields.get(i).sendKeys(fileReaderClass.readFromFile(i+1));
+        }
+        fields.get(2).clear();
+        fields.get(2).sendKeys(fileReaderClass.readFromFile(8));
+        sign_in_button.click();
+        Assert.assertTrue(error_alert.isDisplayed());
+        fields.get(2).clear();
+        fields.get(3).clear();
+        fields.get(2).sendKeys(fileReaderClass.readFromFile(3));
+        Thread.sleep(200);
+        fields.get(3).sendKeys(fileReaderClass.readFromFile(7));
+        sign_in_button.click();
+        Thread.sleep(1000);
+        Assert.assertTrue(error_alert.isDisplayed());
+        System.out.println("ALREADY EXISTING CREDENTIALS TEST PASSED");
+
+    }
+
+    public void validRegistration() throws IOException, InterruptedException {
         for (int i = 0; i <fields.size(); i++){
             fields.get(i).clear();
             fields.get(i).sendKeys(fileReaderClass.readFromFile(i+1));
         }
         sign_in_button.click();
+        Thread.sleep(200);
+        Assert.assertTrue(success_alert.isDisplayed());
+
         System.out.println("REGISTRATION TEST PASSED");
     }
 }
