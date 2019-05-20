@@ -1,4 +1,4 @@
-package Pages;
+package WebSite;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,7 +22,6 @@ public class InitialPage {
     LoginPage loginPage;
     RegisterPage registerPage;
     HelpMethods helpMethods;
-
 
     public InitialPage(WebDriver driver) {
         this.driver = driver;

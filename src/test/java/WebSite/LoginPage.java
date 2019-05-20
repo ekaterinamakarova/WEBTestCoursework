@@ -1,4 +1,4 @@
-package Pages;
+package WebSite;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -63,7 +63,6 @@ public class LoginPage {
         Thread.sleep(500);
         Assert.assertTrue(userName.isDisplayed());
         System.out.println("VALID LOGIN TEST PASSED");
-
     }
 
 

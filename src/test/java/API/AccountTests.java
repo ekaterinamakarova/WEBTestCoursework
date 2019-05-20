@@ -1,7 +1,7 @@
 package API;
 
 import API.models.dto.AccountBanDTO;
-import API.models.dto.AccountCredentialsDTO;
+import API.models.dto.AccountAuthenticationDTO;
 import API.models.dto.AccountEmailDTO;
 import API.models.dto.AccountRegistrationDTO;
 import io.restassured.http.ContentType;
@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class AccountTests {
-    public void authenticateCredentialsOK(AccountCredentialsDTO dto) {
+    public void authenticateCredentialsOK(AccountAuthenticationDTO dto) {
         given()
                 .spec(Configuration.getRequestSpec())
                 .contentType(ContentType.JSON)
@@ -22,7 +22,7 @@ public class AccountTests {
     }
 
     public void authenticateWithInvalidCredentials(){
-        AccountCredentialsDTO dto = new AccountCredentialsDTO("login", null);
+        AccountAuthenticationDTO dto = new AccountAuthenticationDTO("login", null);
         given()
                 .spec(Configuration.getRequestSpec())
                 .contentType(ContentType.JSON)
@@ -34,7 +34,7 @@ public class AccountTests {
     }
 
     public void authenticateWithNullCredentials(){
-        AccountCredentialsDTO dto = new AccountCredentialsDTO(null, null);
+        AccountAuthenticationDTO dto = new AccountAuthenticationDTO(null, null);
         given()
                 .spec(Configuration.getRequestSpec())
                 .contentType(ContentType.JSON)
@@ -46,7 +46,7 @@ public class AccountTests {
     }
 
     public void authenticateWithWrongCredentials(){
-        AccountCredentialsDTO dto = new AccountCredentialsDTO("qwerty", "qwerty");
+        AccountAuthenticationDTO dto = new AccountAuthenticationDTO("qwerty", "qwerty");
         given()
                 .spec(Configuration.getRequestSpec())
                 .contentType(ContentType.JSON)

@@ -1,4 +1,4 @@
-package Pages;
+package WebSite;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,8 +16,6 @@ public class RegisterPage {
     @FindBy(xpath = "//button[contains(text(),'Sign in')]") private WebElement sign_in_button;
     @FindBy(css = "div[class='alert alert-danger error']") private WebElement error_alert;
     @FindBy(css = "div[class='alert alert-success error']") private WebElement success_alert;
-
-
 
     WebDriver driver;
     HelpMethods helpMethods;
@@ -233,7 +231,6 @@ public class RegisterPage {
         Thread.sleep(1000);
         Assert.assertTrue(error_alert.isDisplayed());
         System.out.println("ALREADY EXISTING CREDENTIALS TEST PASSED");
-
     }
 
     public void validRegistration() throws IOException, InterruptedException {
@@ -244,7 +241,6 @@ public class RegisterPage {
         sign_in_button.click();
         Thread.sleep(200);
         Assert.assertTrue(success_alert.isDisplayed());
-
         System.out.println("REGISTRATION TEST PASSED");
     }
 }

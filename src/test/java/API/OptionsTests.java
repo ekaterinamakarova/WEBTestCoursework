@@ -3,7 +3,6 @@ package API;
 
 import API.models.Social;
 import io.restassured.http.ContentType;
-import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.core.IsEqual.equalTo;

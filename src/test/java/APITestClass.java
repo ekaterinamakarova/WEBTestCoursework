@@ -1,11 +1,14 @@
 import API.AccountTests;
 import API.OptionsTests;
-import API.models.dto.AccountCredentialsDTO;
+import API.models.dto.AccountAuthenticationDTO;
+import API.models.dto.AccountBanDTO;
+import API.models.dto.AccountEmailDTO;
 import API.models.dto.AccountRegistrationDTO;
 import org.testng.annotations.Test;
 
 
 public class APITestClass {
+
     AccountTests account = new AccountTests();
     OptionsTests options = new OptionsTests();
 
@@ -16,7 +19,7 @@ public class APITestClass {
 
     @Test
     public void accountAuthentication(){
-        account.authenticateCredentialsOK(new AccountCredentialsDTO("Altairka", "rainbow"));
+        account.authenticateCredentialsOK(new AccountAuthenticationDTO("Altairka", "rainbow"));
         account.authenticateWithInvalidCredentials();
         account.authenticateWithNullCredentials();
         account.authenticateWithWrongCredentials();
@@ -29,8 +32,8 @@ public class APITestClass {
         account.registrationWithEmptyCredentials();
         account.registrationLoginIsAlreadyTaken();
         account.registrationEmailIsAlreadyTaken();
-        //account.updateEmail();
-        account.ban("1","Altairka", true);
+        account.updateEmail(new AccountEmailDTO("acciosky@mail.ru"));
+        account.ban(new AccountBanDTO(""));
 
     }
 

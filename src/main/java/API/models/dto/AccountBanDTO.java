@@ -12,7 +12,7 @@ public class AccountBanDTO {
     public AccountBanDTO(String id, String login, boolean isBanned){
         this.id=id;
         this.login=login;
-        this.isBanned=true;
+        this.isBanned=isBanned;
     }
     public String getId() {
         return id;

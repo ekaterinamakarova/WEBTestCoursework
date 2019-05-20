@@ -1,4 +1,4 @@
-package Pages;
+package WebSite;
 
 import org.openqa.selenium.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
