@@ -38,30 +38,106 @@ public class RegisterPage {
         Assert.assertEquals(sign_in_button.isDisplayed(),true);
     }
 
-    public void fields_validation(){
+    public void firstNameField_validation(){
+        WebElement firstName = fields.get(0);
         sign_in_button.click();
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
-        fields.get(0).sendKeys("a");
+        firstName.sendKeys("a");
         sign_in_button.click();
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "First name");
-        fields.get(0).clear();
-        fields.get(0).sendKeys("aa");
+        firstName.clear();
+        firstName.sendKeys("aa");
         sign_in_button.click();
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
-        fields.get(0).clear();
-        fields.get(0).sendKeys("123456789123456789123456"); //23
+        firstName.clear();
+        firstName.sendKeys("123456789123456789123456"); //23
         sign_in_button.click();
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
-        fields.get(0).clear();
-        fields.get(0).sendKeys("1234567891234567891234567"); //24
+        firstName.clear();
+        firstName.sendKeys("1234567891234567891234567"); //24
         sign_in_button.click();
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
-        fields.get(0).clear();
-        fields.get(0).sendKeys("12345678912345678912345678"); //25
+        firstName.clear();
+        firstName.sendKeys("12345678912345678912345678"); //25
         sign_in_button.click();
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
+        String[] checking = firstName.getAttribute("value").split("");
+        Assert.assertEquals(checking.length, 24);
+        firstName.clear();
+        firstName.sendKeys("    "); //spaces
+        sign_in_button.click();
+        //Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "First name"); //////////////////////////////////////////
+        firstName.clear();
+        firstName.sendKeys("*/@*/--"); //spaces
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
+        firstName.clear();
+    }
 
+    public void secondNameField_validation(){
+        WebElement secondName = fields.get(1);
+        secondName.sendKeys("a");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Second name");
+        secondName.clear();
+        secondName.sendKeys("aa");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
+        secondName.clear();
+        secondName.sendKeys("123456789123456789123456"); //23
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
+        secondName.clear();
+        secondName.sendKeys("1234567891234567891234567"); //24
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
+        secondName.clear();
+        secondName.sendKeys("12345678912345678912345678"); //25
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
+        String[] checking = secondName.getAttribute("value").split("");
+        Assert.assertEquals(checking.length, 24);
+        secondName.clear();
+        secondName.sendKeys("    "); //spaces
+        sign_in_button.click();
+        //Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Second name"); //////////////////////////////////////////
+        secondName.clear();
+        secondName.sendKeys("*/@*/--"); //spaces
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
+        secondName.clear();
+    }
 
+    public void loginFieldChecking(){
+        WebElement login = fields.get(2);
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
+        login.sendKeys("aaa"); //3
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
+        login.clear();
+        login.sendKeys("aaab"); //4
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
+        login.clear();
+        login.sendKeys("qwertyuiopasdfghjklzxcv"); //23
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
+        login.clear();
+        login.sendKeys("qwertyuiopasdfghаjklzxcv"); //24
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
+        login.clear();
+        login.sendKeys("12345678912345678912345678"); //25
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
+        String[] checking = login.getAttribute("value").split("");
+        Assert.assertEquals(checking.length, 24);
+        login.clear();
+        login.sendKeys("//*@@*");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
+        login.clear();
 
     }
 

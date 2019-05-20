@@ -18,6 +18,7 @@ public class InitialPage {
     WebDriver driver;
     LoginPage loginPage;
     RegisterPage registerPage;
+    HelpMethods helpMethods;
 
 
     public InitialPage(WebDriver driver) {
@@ -25,9 +26,11 @@ public class InitialPage {
         PageFactory.initElements(driver, this);
         loginPage = new LoginPage(driver);
         registerPage = new RegisterPage(driver);
+        helpMethods = new HelpMethods(driver);
     }
 
     public void navigationPresenceChecking() {
+        helpMethods.implicitWait(driver);
         Assert.assertEquals(navigation_bar.isDisplayed(), true); // case #6
         ArrayList<String> obtainedList = new ArrayList<>();
         for (WebElement we : navigation_sections) {

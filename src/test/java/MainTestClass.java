@@ -46,7 +46,9 @@ public class MainTestClass {
     public void testRegisterPage() {
         initialPage.toRegisterPage();
         registerPage.fieldsChecking();
-        registerPage.fields_validation();
+        registerPage.firstNameField_validation();
+        registerPage.secondNameField_validation();
+        registerPage.loginFieldChecking();
     }
 
 
