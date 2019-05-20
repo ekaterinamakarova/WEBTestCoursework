@@ -14,9 +14,9 @@ public class AccountTests {
                 .spec(Configuration.getRequestSpec())
                 .contentType(ContentType.JSON)
                 .body(dto)
-        .when()
+                .when()
                 .post(App.getDomain() + "/api/account/authenticate")
-        .then()
+                .then()
                 .contentType(ContentType.JSON)
                 .body("code", equalTo(200));
     }
@@ -142,8 +142,27 @@ public class AccountTests {
                 .body("code", equalTo(200));
     }
 
+    public void getAccountInfo(String token) {
+        given()
+                .spec(Configuration.getRequestSpec())
+                .header("Authentication", "Bearer " + token)
+                .contentType(ContentType.JSON)
+                .when()
+                .get(App.getDomain() + "/api/account/getAccountInfo")
+                .then()
+                .contentType(ContentType.JSON)
+                .body("code", equalTo(200));
+    }
 
-
-
-
+    public void getProfileInfo(String token) {
+        given()
+                .spec(Configuration.getRequestSpec())
+                .header("Authentication", "Bearer " + token)
+                .contentType(ContentType.JSON)
+                .when()
+                .get(App.getDomain() + "/api/account/getProfileInfo")
+                .then()
+                .contentType(ContentType.JSON)
+                .body("code", equalTo(200));
+    }
 }

@@ -1,11 +1,11 @@
-package API.models;
+package API.models.dto;
 
 public class Social {
 
     private String id;
     private String name;
     private String link;
-    private String icon;//полная ссылка
+    private String icon;
     private String iconFont;
 
     public Social() {
