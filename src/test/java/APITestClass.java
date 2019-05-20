@@ -1,6 +1,7 @@
 import API.AccountTests;
 import API.OptionsTests;
 import API.models.dto.AccountCredentialsDTO;
+import API.models.dto.AccountRegistrationDTO;
 import org.testng.annotations.Test;
 
 
@@ -19,6 +20,17 @@ public class APITestClass {
         account.authenticateWithInvalidCredentials();
         account.authenticateWithNullCredentials();
         account.authenticateWithWrongCredentials();
+    }
+
+    @Test
+    public void accountRegister(){
+        account.registrationValid(new AccountRegistrationDTO("ekaterina99", "password", "acciosky@mail.ru" ));
+        account.registrationWithMissingCredentials();
+        account.registrationWithEmptyCredentials();
+        account.registrationLoginIsAlreadyTaken();
+        account.registrationEmailIsAlreadyTaken();
+        //account.updateEmail();
+        account.ban("1","Altairka", true);
 
     }
 
