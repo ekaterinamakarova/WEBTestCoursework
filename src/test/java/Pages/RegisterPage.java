@@ -108,7 +108,7 @@ public class RegisterPage {
         secondName.clear();
     }
 
-    public void loginFieldChecking(){
+    public void loginField_validation(){
         WebElement login = fields.get(2);
         sign_in_button.click();
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Login");
@@ -137,8 +137,70 @@ public class RegisterPage {
         login.sendKeys("//*@@*");
         sign_in_button.click();
         Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
-        login.clear();
+    }
 
+    public void emailField_validation(){
+        WebElement email = fields.get(3);
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
+        email.sendKeys("ekaterina.makarova.1999mail.ru");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
+        email.clear();
+        email.sendKeys("ekaterina.makarova.1999@@mail.ru");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
+        email.clear();
+        email.sendKeys("ekaterina.makarova.1999@");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
+        email.clear();
+        email.sendKeys("@mail.ru");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
+        email.clear();
+        email.sendKeys("  ");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Email");
+        email.clear();
+        email.sendKeys("ekaterina.makarova.1999@mail.ru"); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    }
+
+    public void passwordFields_validation(){
+        WebElement password = fields.get(4);
+        WebElement repeatPassword = fields.get(5);
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Password");
+        password.sendKeys("12345");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Password");
+        password.sendKeys("6");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Repeat password");
+        password.sendKeys("7");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Repeat password");
+        password.clear();
+        password.sendKeys("123456789qwertyuiokjhgf");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Repeat password");
+        password.sendKeys("f");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Repeat password");
+        password.sendKeys("fq");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Repeat password");
+        String[] checking = password.getAttribute("value").split("");
+        Assert.assertEquals(checking.length, 24);
+        password.clear();
+        repeatPassword.sendKeys("123456");
+        sign_in_button.click();
+        Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Password");
+        repeatPassword.clear();
+        password.sendKeys("1345678");
+        repeatPassword.sendKeys("8765431");
+        sign_in_button.click();
+        //Assert.assertEquals(helpMethods.currentElements().getAttribute("placeholder"), "Password");
     }
 
 

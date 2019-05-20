@@ -45,10 +45,12 @@ public class MainTestClass {
     @Test(description = "Test cases _______", dependsOnMethods = "testInitialPage")
     public void testRegisterPage() {
         initialPage.toRegisterPage();
-        registerPage.fieldsChecking();
-        registerPage.firstNameField_validation();
-        registerPage.secondNameField_validation();
-        registerPage.loginFieldChecking();
+//        registerPage.fieldsChecking();
+//        registerPage.firstNameField_validation();
+//        registerPage.secondNameField_validation();
+        registerPage.loginField_validation();
+        registerPage.emailField_validation();
+        registerPage.passwordFields_validation();
     }
 
 
