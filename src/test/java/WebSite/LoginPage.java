@@ -64,6 +64,4 @@ public class LoginPage {
         Assert.assertTrue(userName.isDisplayed());
         System.out.println("VALID LOGIN TEST PASSED");
     }
-
-
 }
