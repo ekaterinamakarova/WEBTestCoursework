@@ -44,7 +44,7 @@ public class WebTestClass {
         registerPage.loginField_validation();
         registerPage.emailField_validation();
         registerPage.passwordFields_validation();
-        //registerPage.inputOgExistindData();
+        registerPage.inputOgExistindData();
         registerPage.validRegistration();
     }
 
